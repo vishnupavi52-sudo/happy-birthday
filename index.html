@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Prathyusha! ✨</title>
+  
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            roseGold: '#e0a99e',
+            blush: '#fff1f2',
+            plumDeep: '#160b1c',
+            plumDark: '#23112b',
+            wineVelvet: '#46142c',
+            champagne: '#f8e7d2',
+            goldGlow: '#f5c56c',
+          },
+          fontFamily: {
+            script: ['"Great Vibes"', 'cursive'],
+            brush: ['"Alex Brush"', 'cursive'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          animation: {
+            'float-slow': 'float 7s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 2.5s infinite',
+            'flicker': 'flicker 1.5s infinite alternate',
+            'shimmer': 'shimmer 3s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-14px) rotate(1.5deg)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.6', filter: 'drop-shadow(0 0 15px rgba(245, 197, 108, 0.4))' },
+              '50%': { opacity: '1', filter: 'drop-shadow(0 0 35px rgba(245, 197, 108, 0.8))' },
+            },
+            flicker: {
+              '0%': { transform: 'scale(1) rotate(-1deg)', opacity: '0.9' },
+              '50%': { transform: 'scale(1.12) rotate(2deg)', opacity: '1' },
+              '100%': { transform: 'scale(0.95) rotate(-2deg)', opacity: '0.85' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom romantic smooth scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #15091a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #d97793, #a24b6f);
+      border-radius: 999px;
+    }
+
+    /* Glassmorphism styling */
+    .glass-card {
+      background: rgba(45, 20, 50, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(245, 215, 190, 0.15);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 192, 203, 0.05);
+    }
+    .glass-card-light {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Shimmering Gold Gradient Text */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #ffe8bf 10%, #f4b66b 50%, #fdf5ea 80%, #d89b4f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .rose-gradient-text {
+      background: linear-gradient(135deg, #fcdede 0%, #f4a1bb 50%, #e06d93 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Candle flame visuals */
+    .candle-flame {
+      background: radial-gradient(ellipse at bottom, #fff7a0 0%, #ff8b2b 65%, rgba(255, 60, 0, 0) 100%);
+      border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+      box-shadow: 0 0 20px #ff9e2b, 0 0 45px #ff5100;
+    }
+
+    /* Polaroid 3D tilt & feel */
+    .polaroid-frame {
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
+    }
+    .polaroid-frame:hover {
+      transform: translateY(-10px) rotate(0deg) scale(1.03) !important;
+      box-shadow: 0 25px 50px rgba(224, 114, 150, 0.3), 0 0 30px rgba(245, 197, 108, 0.3);
+      z-index: 20;
+    }
+
+    /* Floating particles background canvas */
+    #ambientCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="bg-plumDeep text-champagne font-sans overflow-x-hidden selection:bg-rose-500 selection:text-white relative">
+
+  <!-- Ambient background glow spots -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute -top-[20%] -left-[10%] w-[55vw] h-[55vw] bg-wineVelvet/35 rounded-full blur-[140px]"></div>
+    <div class="absolute top-[40%] -right-[15%] w-[50vw] h-[50vw] bg-purple-900/25 rounded-full blur-[150px]"></div>
+    <div class="absolute -bottom-[10%] left-[20%] w-[60vw] h-[60vw] bg-rose-950/30 rounded-full blur-[160px]"></div>
+  </div>
+
+  <!-- Interactive Canvas for Floating Hearts & Petals -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- ========================================================
+       1. SPECIAL UNLOCK SCREEN (Curtain / Mystery Box Intro)
+       ======================================================== -->
+  <div id="unlockScreen" class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-plumDark via-[#15071a] to-black transition-all duration-1000 p-4">
+    <!-- Starry backdrop inside gate -->
+    <div class="text-center max-w-lg w-full relative z-10 px-6 py-12 rounded-3xl glass-card border border-roseGold/20 shadow-2xl flex flex-col items-center">
+      
+      <!-- Wax Seal / Golden Heart Ornament -->
+      <div class="relative mb-6">
+        <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-amber-600 via-rose-500 to-amber-300 flex items-center justify-center p-1 shadow-lg shadow-rose-500/30 animate-pulse">
+          <div class="w-full h-full rounded-full bg-[#351023] border border-amber-300/40 flex items-center justify-center text-amber-200">
+            <i data-lucide="sparkles" class="w-10 h-10 animate-bounce"></i>
+          </div>
+        </div>
+        <span class="absolute -top-1 -right-1 flex h-4 w-4">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-4 w-4 bg-rose-500"></span>
+        </span>
+      </div>
+
+      <p class="text-xs uppercase tracking-[0.35em] text-rose-300/80 mb-2 font-medium">Classified • For Her Eyes Only</p>
+      <h1 class="text-4xl md:text-5xl font-script text-white mb-3">To The Most Beautiful Soul</h1>
+      <p class="font-serif italic text-lg text-rose-200/90 mb-8 max-w-sm">
+        "A special day has arrived, reserved only for someone extraordinary..."
+      </p>
+
+      <!-- Mystery Unlock Button -->
+      <button id="unlockBtn" class="group relative px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-600 to-amber-500 text-white font-medium shadow-xl shadow-rose-600/30 hover:shadow-rose-500/50 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center space-x-3 overflow-hidden cursor-pointer">
+        <div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+        <i data-lucide="heart" class="w-5 h-5 fill-white text-white group-hover:animate-ping"></i>
+        <span class="text-lg tracking-wide font-sans">Open Prathyusha's Surprise</span>
+        <i data-lucide="gift" class="w-5 h-5"></i>
+      </button>
+
+      <p class="text-[12px] text-zinc-400 mt-5 flex items-center gap-1.5">
+        <i data-lucide="volume-2" class="w-3.5 h-3.5 text-rose-400"></i> Turn on sound for the romantic melody
+      </p>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       FLOATING AUDIO CONTROLLER (Web Audio API Synthesizer)
+       ======================================================== -->
+  <div id="musicPill" class="fixed top-5 right-5 z-40 hidden md:flex items-center gap-3 px-4 py-2.5 rounded-full glass-card border border-roseGold/30 text-xs shadow-xl transition-all duration-300 hover:border-roseGold">
+    <div id="soundWaves" class="flex items-center gap-0.5 h-4">
+      <span class="w-1 bg-rose-400 rounded-full h-2 animate-[pulse_0.6s_infinite]"></span>
+      <span class="w-1 bg-amber-400 rounded-full h-4 animate-[pulse_0.9s_infinite_0.2s]"></span>
+      <span class="w-1 bg-pink-400 rounded-full h-3 animate-[pulse_0.7s_infinite_0.4s]"></span>
+      <span class="w-1 bg-rose-300 rounded-full h-5 animate-[pulse_1s_infinite_0.1s]"></span>
+    </div>
+    <span class="text-rose-200/90 font-medium">Birthday Melody</span>
+    <button id="toggleAudioBtn" class="w-7 h-7 rounded-full bg-rose-500/30 flex items-center justify-center hover:bg-rose-500 transition text-white">
+      <i id="audioIcon" data-lucide="volume-2" class="w-4 h-4"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Floating Audio Button -->
+  <button id="toggleAudioMobile" class="fixed top-4 right-4 z-40 md:hidden w-11 h-11 rounded-full glass-card border border-roseGold/40 flex items-center justify-center text-rose-300 shadow-lg">
+    <i id="audioIconMobile" data-lucide="music" class="w-5 h-5"></i>
+  </button>
+
+  <!-- ========================================================
+       HERO CELEBRATION SECTION
+       ======================================================== -->
+  <main class="relative z-10 min-h-screen max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-24 flex flex-col items-center">
+
+    <!-- Grand Title Header -->
+    <header class="text-center max-w-3xl mt-6 mb-16 relative">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card-light text-rose-300 text-xs md:text-sm tracking-wider uppercase mb-5 border border-rose-300/20">
+        <i data-lucide="stars" class="w-4 h-4 text-amber-300"></i> Celebrating Pure Radiance & Grace
+      </div>
+
+      <h1 class="text-5xl sm:text-7xl lg:text-8xl font-script tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-pink-200 to-amber-200 drop-shadow-[0_10px_20px_rgba(244,114,182,0.3)] mb-4">
+        Happy Birthday
+      </h1>
+      
+      <div class="relative inline-block">
+        <h2 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold gold-gradient-text tracking-wide uppercase px-4">
+          Prathyusha
+        </h2>
+        <div class="w-full h-1 bg-gradient-to-r from-transparent via-amber-300/70 to-transparent mt-2"></div>
+      </div>
+
+      <p class="font-serif italic text-lg sm:text-2xl text-rose-100/80 mt-6 max-w-xl mx-auto leading-relaxed">
+        To the girl whose smile lights up rooms, whose grace takes breaths away, and whose heart makes everything in this world infinitely warmer.
+      </p>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="#cakeSection" class="px-6 py-3 rounded-full bg-gradient-to-r from-pink-600 to-rose-600 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-pink-900/40 hover:scale-105 transition-transform">
+          <i data-lucide="cake" class="w-4 h-4"></i> Blow Candle & Cut Cake
+        </a>
+        <a href="#gallerySection" class="px-6 py-3 rounded-full glass-card-light border border-white/20 text-white font-medium text-sm flex items-center gap-2 hover:bg-white/10 transition">
+          <i data-lucide="camera" class="w-4 h-4 text-amber-300"></i> Cherished Memories
+        </a>
+      </div>
+    </header>
+
+    <!-- ========================================================
+         2. FEATURED PHOTO SHOWCASE & ROMANTIC SPOTLIGHT
+         ======================================================== -->
+    <section class="w-full mb-28">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left: Masterpiece Portrait (Image 5) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative group">
+            <div class="absolute -inset-2 bg-gradient-to-r from-rose-500 via-amber-400 to-purple-600 rounded-3xl blur-xl opacity-40 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+            
+            <div class="relative bg-plumDark/80 p-3.5 rounded-3xl border border-roseGold/30 shadow-2xl max-w-sm">
+              <div class="overflow-hidden rounded-2xl relative aspect-[3/4]">
+                <img 
+                  src="1000334696.jpg" 
+                  alt="Prathyusha smiling in radiant pink and gold silk saree" 
+                  class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+                  onerror="this.src='https://placehold.co/600x800/46142c/ffffff?text=Prathyusha+Goddess'"
+                />
+                <!-- Subtle gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5">
+                  <span class="text-xs uppercase tracking-widest text-amber-300 font-semibold mb-1">Elegance Personified</span>
+                  <p class="font-serif text-lg text-white font-medium leading-snug">
+                    That golden glow, the peacock jhumkas, and the sweetest smile that melts my world.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Poetic Love Words & Quick Stats -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+          <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/10">
+            <div class="flex items-center gap-3 text-rose-300 mb-4">
+              <i data-lucide="sparkle" class="w-6 h-6 text-amber-300"></i>
+              <span class="text-sm font-semibold tracking-widest uppercase">A Note For You Today</span>
+            </div>
+            
+            <h3 class="text-2xl sm:text-3xl font-serif text-white font-bold mb-4">
+              "No words will ever be enough to describe how mesmerizing you are, Prathyusha."
+            </h3>
+            
+            <p class="text-rose-100/80 leading-relaxed font-sans mb-6">
+              From your effortless traditional grace in sarees to your carefree laughter, from your sharp eyes behind frames to your boundless compassion—you turn everyday moments into poetry. Today isn't just another calendar date; it's the celebration of my favorite human in the entire universe.
+            </p>
+
+            <div class="grid grid-cols-3 gap-3 pt-4 border-t border-white/10 text-center">
+              <div class="p-3 rounded-2xl bg-white/5">
+                <span class="block text-2xl sm:text-3xl font-serif font-bold text-amber-300">100%</span>
+                <span class="text-[11px] sm:text-xs text-rose-200/70 uppercase">Pure Grace</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/5">
+                <span class="block text-2xl sm:text-3xl font-serif font-bold text-rose-400">∞</span>
+                <span class="text-[11px] sm:text-xs text-rose-200/70 uppercase">Reasons To Adore</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/5">
+                <span class="block text-2xl sm:text-3xl font-serif font-bold text-pink-300">#1</span>
+                <span class="text-[11px] sm:text-xs text-rose-200/70 uppercase">In My Heart</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         3. INTERACTIVE CAKE CUTTING & CANDLE BLOWING
+         ======================================================== -->
+    <section id="cakeSection" class="w-full mb-32 flex flex-col items-center">
+      <div class="text-center max-w-xl mb-10">
+        <span class="text-xs uppercase tracking-[0.3em] text-amber-300 font-semibold">Make A Real Wish</span>
+        <h2 class="text-3xl sm:text-5xl font-script text-white mt-1">Virtual Cake & Candle</h2>
+        <p class="text-rose-200/70 font-serif italic text-base sm:text-lg mt-2">
+          Tap or click on the candle flame to blow it out, make your secret wish, and cut your birthday cake!
+        </p>
+      </div>
+
+      <div class="relative w-full max-w-md flex flex-col items-center">
+        <!-- Glow backing -->
+        <div class="absolute w-72 h-72 bg-rose-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- The Cake Construction -->
+        <div class="relative z-10 flex flex-col items-center select-none pt-12 pb-6">
+          
+          <!-- Candle -->
+          <div id="candleWrapper" class="relative flex flex-col items-center cursor-pointer group" onclick="blowCandle()">
+            <!-- Flame -->
+            <div id="candleFlame" class="w-6 h-9 candle-flame animate-flicker relative -mb-1 z-20 cursor-pointer transition-all duration-300">
+              <span class="absolute inset-0 bg-yellow-200/50 rounded-full blur-[2px]"></span>
+            </div>
+            <!-- Smoke (Hidden initially) -->
+            <div id="candleSmoke" class="hidden absolute -top-8 w-1.5 h-10 bg-gradient-to-t from-gray-400 to-transparent rounded-full animate-pulse"></div>
+            <!-- Wick -->
+            <div class="w-1 h-3 bg-zinc-800 rounded-t"></div>
+            <!-- Candle Body -->
+            <div class="w-4 h-14 bg-gradient-to-b from-amber-200 via-rose-300 to-pink-400 rounded-md shadow-md border-x border-amber-100 flex flex-col justify-around py-1">
+              <span class="w-full h-1 bg-white/40 block"></span>
+              <span class="w-full h-1 bg-white/40 block"></span>
+            </div>
+          </div>
+
+          <!-- Cake Tier 1 (Top) -->
+          <div class="relative w-44 h-16 bg-gradient-to-r from-[#ffe4e6] via-[#fbcfe8] to-[#f472b6] rounded-t-2xl shadow-inner border-t-4 border-white flex items-center justify-center overflow-hidden -mt-1">
+            <div class="absolute inset-x-0 top-0 h-3 bg-white/60 rounded-b-xl"></div>
+            <span class="font-serif italic text-xs text-rose-800 tracking-wider font-semibold z-10">Sweet Prathyusha</span>
+            <!-- Drips -->
+            <div class="absolute bottom-0 w-full flex justify-around opacity-30">
+              <div class="w-3 h-5 bg-rose-300 rounded-full"></div>
+              <div class="w-4 h-7 bg-rose-300 rounded-full"></div>
+              <div class="w-3 h-4 bg-rose-300 rounded-full"></div>
+            </div>
+          </div>
+
+          <!-- Cake Tier 2 (Bottom) -->
+          <div class="relative w-64 h-24 bg-gradient-to-r from-[#fda4af] via-[#f43f5e] to-[#be123c] rounded-t-3xl shadow-2xl border-t-4 border-amber-200 flex flex-col items-center justify-center -mt-1 overflow-hidden">
+            <div class="absolute inset-x-0 top-0 h-4 bg-amber-100/70 rounded-b-xl"></div>
+            <div class="flex items-center gap-2 text-white/90 font-serif text-sm tracking-widest uppercase">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-200"></i>
+              <span>Forever Blessed</span>
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-200"></i>
+            </div>
+            <!-- Frosting beads -->
+            <div class="absolute bottom-2 inset-x-4 flex justify-between">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow"></span>
+            </div>
+          </div>
+
+          <!-- Cake Stand Plate -->
+          <div class="w-80 h-5 bg-gradient-to-r from-amber-200 via-amber-100 to-amber-300 rounded-full shadow-2xl border-b-4 border-amber-600/40 -mt-1"></div>
+          <div class="w-32 h-6 bg-gradient-to-b from-amber-200 to-amber-400 rounded-b-xl shadow-lg"></div>
+        </div>
+
+        <!-- Wish Message Box (Appears after blowing) -->
+        <div id="wishCongrats" class="hidden text-center mt-6 p-6 rounded-2xl glass-card border border-amber-300/40 animate-fade-in w-full">
+          <div class="w-12 h-12 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mx-auto mb-2">
+            <i data-lucide="party-popper" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-2xl font-script text-amber-200">Wish Granted & Sent To The Stars!</h4>
+          <p class="font-serif italic text-rose-100 text-sm mt-1">
+            "May every single dream in your beautiful heart come true this year, Prathyusha."
+          </p>
+          <button onclick="triggerConfettiStorm()" class="mt-4 px-5 py-2 rounded-full bg-rose-600 hover:bg-rose-500 text-xs font-semibold text-white tracking-wider uppercase transition shadow-md">
+            More Fireworks & Confetti 🎉
+          </button>
+        </div>
+
+        <!-- Instruction Button below candle -->
+        <button id="candleTapHint" onclick="blowCandle()" class="mt-4 px-6 py-2 rounded-full glass-card border border-rose-300/30 text-rose-200 text-xs flex items-center gap-2 hover:bg-rose-500/20 transition">
+          <i data-lucide="wind" class="w-4 h-4 text-amber-300"></i> Tap candle to blow out flame
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         4. MEMORY POLAROID CAROUSEL & PHOTO GALLERY (All 5 Images)
+         ======================================================== -->
+    <section id="gallerySection" class="w-full mb-32">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs uppercase tracking-[0.3em] text-rose-300 font-semibold">Treasured Perspectives</span>
+        <h2 class="text-4xl sm:text-5xl font-script text-white mt-1">A Gallery of Your Magic</h2>
+        <p class="text-rose-200/70 font-serif italic text-base sm:text-lg mt-2">
+          Every snapshot holds a memory, every smile holds a heartbeat.
+        </p>
+      </div>
+
+      <!-- Photo Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+
+        <!-- Photo 1: Purple Saree Outdoors (1000334713.jpg) -->
+        <div class="polaroid-frame bg-[#fdfbf7] text-zinc-800 p-4 pb-6 rounded-2xl transform md:-rotate-2">
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-xl bg-zinc-200 mb-4 relative group">
+            <img 
+              src="1000334713.jpg" 
+              alt="Prathyusha seated gracefully in purple saree" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
+              onerror="this.src='https://placehold.co/600x800/2e1065/ffffff?text=Purple+Saree+Grace'"
+            />
+            <span class="absolute top-3 right-3 bg-black/50 text-white text-[11px] px-2.5 py-1 rounded-full backdrop-blur-sm">
+              Royal Royalty
+            </span>
+          </div>
+          <p class="font-serif italic font-bold text-lg text-plumDark text-center">
+            "Regal & Serene in Purple"
+          </p>
+          <p class="text-center text-xs text-zinc-500 font-sans mt-1">
+            Seated like a queen, effortlessly illuminating the garden with pure grace.
+          </p>
+        </div>
+
+        <!-- Photo 2: Studio Portrait (1000334705.jpg) -->
+        <div class="polaroid-frame bg-[#fdfbf7] text-zinc-800 p-4 pb-6 rounded-2xl transform md:rotate-2">
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-xl bg-zinc-200 mb-4 relative group">
+            <img 
+              src="1000334705.jpg" 
+              alt="Prathyusha gorgeous hair and gentle smile" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
+              onerror="this.src='https://placehold.co/600x800/18181b/ffffff?text=Studio+Glow'"
+            />
+            <span class="absolute top-3 right-3 bg-black/50 text-white text-[11px] px-2.5 py-1 rounded-full backdrop-blur-sm">
+              Pure Charm
+            </span>
+          </div>
+          <p class="font-serif italic font-bold text-lg text-plumDark text-center">
+            "The Look That Stole My Breath"
+          </p>
+          <p class="text-center text-xs text-zinc-500 font-sans mt-1">
+            Voluminous waves, that calm aura, and the kindest eyes in the room.
+          </p>
+        </div>
+
+        <!-- Photo 3: Yellow Kurti with Glasses (1000334703.jpg) -->
+        <div class="polaroid-frame bg-[#fdfbf7] text-zinc-800 p-4 pb-6 rounded-2xl transform md:-rotate-1">
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-xl bg-zinc-200 mb-4 relative group">
+            <img 
+              src="1000334703.jpg" 
+              alt="Prathyusha smiling in yellow kurti and glasses" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
+              onerror="this.src='https://placehold.co/600x800/ca8a04/ffffff?text=Sunshine+Smile'"
+            />
+            <span class="absolute top-3 right-3 bg-black/50 text-white text-[11px] px-2.5 py-1 rounded-full backdrop-blur-sm">
+              Sweet Sunshine
+            </span>
+          </div>
+          <p class="font-serif italic font-bold text-lg text-plumDark text-center">
+            "Bright As A Summer Morning"
+          </p>
+          <p class="text-center text-xs text-zinc-500 font-sans mt-1">
+            Yellow chikankari, cute spectacles, and a million-watt smile that brightens any train station.
+          </p>
+        </div>
+
+        <!-- Photo 4: Grey & Navy Saree (1000334702.jpg) -->
+        <div class="polaroid-frame bg-[#fdfbf7] text-zinc-800 p-4 pb-6 rounded-2xl transform md:rotate-3 lg:col-start-1 lg:ml-auto max-w-sm w-full">
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-xl bg-zinc-200 mb-4 relative group">
+            <img 
+              src="1000334702.jpg" 
+              alt="Prathyusha poise and elegance in grey saree" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
+              onerror="this.src='https://placehold.co/600x800/334155/ffffff?text=Poise+In+Saree'"
+            />
+            <span class="absolute top-3 right-3 bg-black/50 text-white text-[11px] px-2.5 py-1 rounded-full backdrop-blur-sm">
+              Sophistication
+            </span>
+          </div>
+          <p class="font-serif italic font-bold text-lg text-plumDark text-center">
+            "Classic Poise & Elegance"
+          </p>
+          <p class="text-center text-xs text-zinc-500 font-sans mt-1">
+            Understated silver hues, captivating stillness, and that natural goddess poise.
+          </p>
+        </div>
+
+        <!-- Photo 5: Pink & Gold Saree with Jhumkas (1000334696.jpg) -->
+        <div class="polaroid-frame bg-[#fdfbf7] text-zinc-800 p-4 pb-6 rounded-2xl transform md:-rotate-2 lg:col-start-2 lg:mr-auto max-w-sm w-full">
+          <div class="aspect-[3/4] w-full overflow-hidden rounded-xl bg-zinc-200 mb-4 relative group">
+            <img 
+              src="1000334696.jpg" 
+              alt="Prathyusha radiant in bridal silk saree with jhumka" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
+              onerror="this.src='https://placehold.co/600x800/be185d/ffffff?text=Silk+Saree+Splendor'"
+            />
+            <span class="absolute top-3 right-3 bg-rose-600 text-white text-[11px] px-2.5 py-1 rounded-full shadow">
+              The Masterpiece
+            </span>
+          </div>
+          <p class="font-serif italic font-bold text-lg text-plumDark text-center">
+            "Silk Saree & Golden Jhumka"
+          </p>
+          <p class="text-center text-xs text-zinc-500 font-sans mt-1">
+            Traditional perfection. When beauty meets simplicity, it's you.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         5. "REASONS WHY YOU ARE MAGICAL" (Interactive Cards)
+         ======================================================== -->
+    <section class="w-full mb-32">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-[0.3em] text-pink-300 font-semibold">Little Love Tokens</span>
+        <h2 class="text-4xl sm:text-5xl font-script text-white mt-1">Why Prathyusha Is Magical</h2>
+        <p class="text-rose-200/70 font-serif italic text-base sm:text-lg mt-2">
+          Tap each heart token to reveal a secret truth I hold deep in my heart.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Card 1 -->
+        <div onclick="revealToken(this)" class="token-card group cursor-pointer glass-card rounded-2xl p-6 border border-white/10 hover:border-pink-400/40 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-12 h-12 rounded-full bg-rose-500/20 text-rose-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif text-lg font-bold text-champagne mb-2">That One Smile</h3>
+          <p class="token-hint text-xs text-rose-300/80 font-sans">Tap to unlock 💌</p>
+          <p class="token-secret hidden text-sm font-serif italic text-rose-100 mt-2 leading-relaxed">
+            "The way your eyes crinkle when you truly laugh can cure any bad day in a split second."
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div onclick="revealToken(this)" class="token-card group cursor-pointer glass-card rounded-2xl p-6 border border-white/10 hover:border-pink-400/40 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="gem" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif text-lg font-bold text-champagne mb-2">Effortless Grace</h3>
+          <p class="token-hint text-xs text-rose-300/80 font-sans">Tap to unlock 💌</p>
+          <p class="token-secret hidden text-sm font-serif italic text-rose-100 mt-2 leading-relaxed">
+            "Whether in silk sarees or comfy yellow kurtis, you carry yourself with unmatched poise."
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div onclick="revealToken(this)" class="token-card group cursor-pointer glass-card rounded-2xl p-6 border border-white/10 hover:border-pink-400/40 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-12 h-12 rounded-full bg-purple-500/20 text-purple-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif text-lg font-bold text-champagne mb-2">Your Golden Heart</h3>
+          <p class="token-hint text-xs text-rose-300/80 font-sans">Tap to unlock 💌</p>
+          <p class="token-secret hidden text-sm font-serif italic text-rose-100 mt-2 leading-relaxed">
+            "Your kindness toward everyone and the deep care you show make you pure gold through and through."
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div onclick="revealToken(this)" class="token-card group cursor-pointer glass-card rounded-2xl p-6 border border-white/10 hover:border-pink-400/40 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="w-12 h-12 rounded-full bg-pink-500/20 text-pink-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="infinity" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif text-lg font-bold text-champagne mb-2">Just Being You</h3>
+          <p class="token-hint text-xs text-rose-300/80 font-sans">Tap to unlock 💌</p>
+          <p class="token-secret hidden text-sm font-serif italic text-rose-100 mt-2 leading-relaxed">
+            "You never pretend. Your authenticity is the rarest, most intoxicating quality I have ever witnessed."
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         6. THE WAX-SEALED ROMANTIC LOVE LETTER
+         ======================================================== -->
+    <section class="w-full mb-32 flex flex-col items-center">
+      <div class="text-center max-w-xl mb-10">
+        <span class="text-xs uppercase tracking-[0.3em] text-rose-300 font-semibold">From The Depths Of My Heart</span>
+        <h2 class="text-4xl sm:text-5xl font-script text-white mt-1">A Letter For Prathyusha</h2>
+        <p class="text-rose-200/70 font-serif italic text-base sm:text-lg mt-2">
+          Click the wax seal to break the ribbon and unveil the heartfelt words written just for you.
+        </p>
+      </div>
+
+      <!-- Sealed Envelope Container -->
+      <div class="w-full max-w-2xl relative">
+        
+        <!-- The Closed Sealed Envelope State -->
+        <div id="envelopeSealed" class="glass-card rounded-3xl p-8 sm:p-12 text-center border border-amber-300/30 flex flex-col items-center justify-center relative shadow-2xl cursor-pointer hover:border-amber-300/60 transition-all" onclick="openLetter()">
+          <!-- Envelope Flap styling -->
+          <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-rose-700 via-red-600 to-amber-500 flex items-center justify-center shadow-lg shadow-red-900/50 mb-4 animate-pulse">
+            <i data-lucide="mail-heart" class="w-10 h-10 text-amber-100"></i>
+          </div>
+          <h3 class="text-2xl font-serif font-bold text-champagne">Wax-Sealed Love Letter</h3>
+          <p class="text-rose-200/80 text-sm mt-1 font-sans">Tied with tenderness, meant for today.</p>
+          <button class="mt-6 px-6 py-2.5 rounded-full bg-gradient-to-r from-amber-400 to-rose-400 text-plumDark font-semibold text-xs tracking-wider uppercase shadow hover:scale-105 transition">
+            Tap to Break Seal
+          </button>
+        </div>
+
+        <!-- The Unfolded Letter State (Hidden until clicked) -->
+        <div id="envelopeOpen" class="hidden bg-[#fdfbf7] text-zinc-900 rounded-3xl p-8 sm:p-14 shadow-2xl border-4 border-amber-100 relative transition-all duration-700">
+          
+          <!-- Decorative Top Floral / Scroll element -->
+          <div class="flex justify-between items-center border-b border-zinc-200 pb-4 mb-6">
+            <span class="text-xs font-serif uppercase tracking-widest text-zinc-400">November • Birthday Edition</span>
+            <div class="flex gap-1 text-amber-600">
+              <i data-lucide="heart" class="w-4 h-4 fill-current"></i>
+            </div>
+            <span class="font-script text-xl text-rose-600">Forever Yours</span>
+          </div>
+
+          <!-- Letter Body -->
+          <div class="space-y-4 font-serif text-lg leading-relaxed text-zinc-800">
+            <p class="font-bold text-2xl text-plumDark font-script text-rose-700">Dearest Prathyusha,</p>
+            
+            <p>
+              On this wonderful day, as another beautiful chapter begins in your life, I wanted to take a moment away from all the noise to tell you what a privilege it is simply to know you, to love you, and to witness the radiance of your existence.
+            </p>
+            
+            <p>
+              You carry a gentle poise that turns ordinary rooms into sanctuaries. When you dress in your sarees—whether in royal purples, soothing greys, or vibrant wedding silks—it feels like tradition itself bows down to admire your elegance. And yet, even in a casual kurta with your glasses pushed up, your warmth outshines the brightest star in the sky.
+            </p>
+
+            <p>
+              My only wish for you today is boundless happiness. May the road ahead bring you victories that take your breath away, laughter that makes your stomach ache, peace in every quiet moment, and dreams that bloom into reality.
+            </p>
+
+            <p class="pt-4 font-script text-3xl text-right text-rose-700">
+              Happy Birthday, My Wonder Woman. ✨
+            </p>
+          </div>
+
+          <!-- Close / Fold button -->
+          <div class="mt-8 pt-4 border-t border-zinc-200 flex justify-end">
+            <button onclick="closeLetter()" class="text-xs text-zinc-400 hover:text-zinc-700 font-sans tracking-wider uppercase flex items-center gap-1">
+              <i data-lucide="chevron-up" class="w-3.5 h-3.5"></i> Fold Letter
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         7. "MAKE A WISH" FLOATING LANTERNS
+         ======================================================== -->
+    <section class="w-full mb-28 text-center max-w-xl">
+      <div class="glass-card rounded-3xl p-8 sm:p-10 border border-amber-300/30">
+        <div class="w-14 h-14 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="flame" class="w-7 h-7"></i>
+        </div>
+        
+        <h2 class="text-3xl sm:text-4xl font-script text-white">Release A Wishing Lantern</h2>
+        <p class="text-rose-100/70 font-serif italic text-sm sm:text-base mt-2 mb-6">
+          Write down a secret wish or intention for your next year of life and release it into the starry sky.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input 
+            id="wishInput" 
+            type="text" 
+            placeholder="Type your deepest wish, Prathyusha..." 
+            class="flex-1 px-5 py-3 rounded-full bg-plumDark/90 border border-rose-300/30 text-white placeholder-rose-200/40 text-sm focus:outline-none focus:border-amber-300"
+          />
+          <button 
+            onclick="releaseLantern()" 
+            class="px-7 py-3 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 text-white font-medium text-sm hover:scale-105 active:scale-95 transition shadow-lg flex items-center justify-center gap-2"
+          >
+            <i data-lucide="send" class="w-4 h-4"></i> Release Lantern
+          </button>
+        </div>
+
+        <div id="lanternStatus" class="hidden mt-4 text-xs font-serif italic text-amber-200 animate-fade-in">
+          ✨ Your golden lantern is ascending into the heavens, carrying your wish into eternity!
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         FOOTER SIGNATURE
+         ======================================================== -->
+    <footer class="text-center text-xs text-rose-300/60 font-sans space-y-2">
+      <p class="flex items-center justify-center gap-1.5">
+        Crafted with endless affection for <span class="text-rose-200 font-semibold">Prathyusha</span> 
+        <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-500 fill-current"></i>
+      </p>
+      <p class="text-[11px] text-zinc-500">
+        May this year be as radiant, joyful, and stunning as you are.
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- ========================================================
+       JAVASCRIPT LOGIC & AUDIO ENGINE
+       ======================================================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    /* ----------------------------------------------------
+       1. AMBIENT PARTICLES (Hearts, Sparkles & Rose Petals)
+       ---------------------------------------------------- */
+    const canvas = document.getElementById('ambientCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class AmbientParticle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 50;
+        this.size = Math.random() * 12 + 6;
+        this.speedY = Math.random() * 0.8 + 0.3;
+        this.speedX = Math.sin(Math.random() * Math.PI) * 0.6;
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = (Math.random() - 0.5) * 1.5;
+        this.opacity = Math.random() * 0.5 + 0.2;
+        this.type = Math.random() > 0.4 ? 'petal' : 'heart';
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        this.rotation += this.rotationSpeed;
+        if (this.y < -20) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.rotation * Math.PI) / 180);
+        ctx.globalAlpha = this.opacity;
+
+        if (this.type === 'heart') {
+          ctx.fillStyle = '#ff7597';
+          ctx.beginPath();
+          const topCurveHeight = this.size * 0.3;
+          ctx.moveTo(0, topCurveHeight);
+          ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, topCurveHeight);
+          ctx.bezierCurveTo(-this.size / 2, (this.size + topCurveHeight) / 2, 0, this.size, 0, this.size);
+          ctx.bezierCurveTo(0, this.size, this.size / 2, (this.size + topCurveHeight) / 2, this.size / 2, topCurveHeight);
+          ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
+          ctx.fill();
+        } else {
+          // Romantic Rose Petal
+          ctx.fillStyle = '#f43f5e';
+          ctx.beginPath();
+          ctx.ellipse(0, 0, this.size * 0.4, this.size * 0.8, Math.PI / 4, 0, 2 * Math.PI);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    }
+
+    // Spawn gentle ambient background elements
+    for (let i = 0; i < 35; i++) {
+      const p = new AmbientParticle();
+      p.y = Math.random() * canvas.height;
+      particles.push(p);
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    /* ----------------------------------------------------
+       2. WEB AUDIO API SYNTHESIZER (Romantic Birthday Melody)
+       ---------------------------------------------------- */
+    let audioCtx = null;
+    let isPlaying = false;
+    let melodyTimeout = null;
+
+    // "Happy Birthday" romantic note frequencies
+    const melodyNotes = [
+      { note: 'G4', freq: 392.00, dur: 0.4 },
+      { note: 'G4', freq: 392.00, dur: 0.4 },
+      { note: 'A4', freq: 440.00, dur: 0.8 },
+      { note: 'G4', freq: 392.00, dur: 0.8 },
+      { note: 'C5', freq: 523.25, dur: 0.8 },
+      { note: 'B4', freq: 493.88, dur: 1.4 },
+
+      { note: 'G4', freq: 392.00, dur: 0.4 },
+      { note: 'G4', freq: 392.00, dur: 0.4 },
+      { note: 'A4', freq: 440.00, dur: 0.8 },
+      { note: 'G4', freq: 392.00, dur: 0.8 },
+      { note: 'D5', freq: 587.33, dur: 0.8 },
+      { note: 'C5', freq: 523.25, dur: 1.4 },
+
+      { note: 'G4', freq: 392.00, dur: 0.4 },
+      { note: 'G4', freq: 392.00, dur: 0.4 },
+      { note: 'G5', freq: 783.99, dur: 0.8 },
+      { note: 'E5', freq: 659.25, dur: 0.8 },
+      { note: 'C5', freq: 523.25, dur: 0.8 },
+      { note: 'B4', freq: 493.88, dur: 0.8 },
+      { note: 'A4', freq: 440.00, dur: 1.2 },
+
+      { note: 'F5', freq: 698.46, dur: 0.4 },
+      { note: 'F5', freq: 698.46, dur: 0.4 },
+      { note: 'E5', freq: 659.25, dur: 0.8 },
+      { note: 'C5', freq: 523.25, dur: 0.8 },
+      { note: 'D5', freq: 587.33, dur: 0.8 },
+      { note: 'C5', freq: 523.25, dur: 1.6 },
+    ];
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playBellTone(freq, duration) {
+      if (!audioCtx || !isPlaying) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        // Warm Celesta / Bell sound
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.18, audioCtx.currentTime + 0.05);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration * 1.5);
+
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration * 1.5);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    let currentNoteIndex = 0;
+    function playMelodyLoop() {
+      if (!isPlaying) return;
+      const current = melodyNotes[currentNoteIndex];
+      playBellTone(current.freq, current.dur);
+
+      currentNoteIndex = (currentNoteIndex + 1) % melodyNotes.length;
+      melodyTimeout = setTimeout(playMelodyLoop, current.dur * 1000);
+    }
+
+    function startMusic() {
+      initAudio();
+      isPlaying = true;
+      playMelodyLoop();
+      updateAudioUI(true);
+    }
+
+    function stopMusic() {
+      isPlaying = false;
+      if (melodyTimeout) clearTimeout(melodyTimeout);
+      updateAudioUI(false);
+    }
+
+    function toggleAudio() {
+      if (isPlaying) {
+        stopMusic();
+      } else {
+        startMusic();
+      }
+    }
+
+    function updateAudioUI(playing) {
+      const soundWaves = document.getElementById('soundWaves');
+      const audioIcon = document.getElementById('audioIcon');
+      const audioIconMobile = document.getElementById('audioIconMobile');
+
+      if (playing) {
+        if (soundWaves) soundWaves.style.opacity = '1';
+        if (audioIcon) audioIcon.setAttribute('data-lucide', 'volume-2');
+        if (audioIconMobile) audioIconMobile.setAttribute('data-lucide', 'volume-2');
+      } else {
+        if (soundWaves) soundWaves.style.opacity = '0.3';
+        if (audioIcon) audioIcon.setAttribute('data-lucide', 'volume-x');
+        if (audioIconMobile) audioIconMobile.setAttribute('data-lucide', 'volume-x');
+      }
+      lucide.createIcons();
+    }
+
+    document.getElementById('toggleAudioBtn').addEventListener('click', toggleAudio);
+    document.getElementById('toggleAudioMobile').addEventListener('click', toggleAudio);
+
+    /* ----------------------------------------------------
+       3. INTRO UNLOCK SEQUENCE
+       ---------------------------------------------------- */
+    document.getElementById('unlockBtn').addEventListener('click', () => {
+      const unlockScreen = document.getElementById('unlockScreen');
+      
+      // Start Romantic Synthesizer Audio
+      startMusic();
+
+      // Launch Celebratory Burst
+      triggerGrandCelebration();
+
+      // Fade out the unlock screen smoothly
+      unlockScreen.style.opacity = '0';
+      unlockScreen.style.transform = 'scale(1.05)';
+      setTimeout(() => {
+        unlockScreen.classList.add('hidden');
+      }, 950);
+    });
+
+    /* ----------------------------------------------------
+       4. CONFEETI & FIREWORKS
+       ---------------------------------------------------- */
+    function triggerGrandCelebration() {
+      const end = Date.now() + 2.5 * 1000;
+      const colors = ['#f43f5e', '#ec4899', '#f59e0b', '#fbbf24', '#ffffff'];
+
+      (function frame() {
+        confetti({
+          particleCount: 4,
+          angle: 60,
+          spread: 60,
+          origin: { x: 0 },
+          colors: colors
+        });
+        confetti({
+          particleCount: 4,
+          angle: 120,
+          spread: 60,
+          origin: { x: 1 },
+          colors: colors
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    }
+
+    function triggerConfettiStorm() {
+      confetti({
+        particleCount: 100,
+        spread: 80,
+        origin: { y: 0.6 },
+        colors: ['#f43f5e', '#fb7185', '#fbbf24', '#fbcfe8']
+      });
+    }
+
+    /* ----------------------------------------------------
+       5. CANDLE BLOWING & CAKE CUTTING
+       ---------------------------------------------------- */
+    let candleBlown = false;
+    function blowCandle() {
+      if (candleBlown) {
+        triggerConfettiStorm();
+        return;
+      }
+      candleBlown = true;
+
+      const flame = document.getElementById('candleFlame');
+      const smoke = document.getElementById('candleSmoke');
+      const congrats = document.getElementById('wishCongrats');
+      const hint = document.getElementById('candleTapHint');
+
+      // Extinguish Flame
+      flame.style.transition = 'all 0.5s ease';
+      flame.style.opacity = '0';
+      flame.style.transform = 'scale(0.1) translateY(-20px)';
+      
+      // Show smoke trail
+      smoke.classList.remove('hidden');
+
+      setTimeout(() => {
+        flame.classList.add('hidden');
+        congrats.classList.remove('hidden');
+        hint.classList.add('hidden');
+        triggerGrandCelebration();
+      }, 400);
+    }
+
+    /* ----------------------------------------------------
+       6. REVEAL TOKEN CARDS
+       ---------------------------------------------------- */
+    function revealToken(element) {
+      const hint = element.querySelector('.token-hint');
+      const secret = element.querySelector('.token-secret');
+      
+      if (secret.classList.contains('hidden')) {
+        hint.classList.add('hidden');
+        secret.classList.remove('hidden');
+        element.classList.add('bg-pink-950/40', 'border-rose-400');
+        confetti({
+          particleCount: 15,
+          spread: 40,
+          origin: { y: 0.7 }
+        });
+      }
+    }
+
+    /* ----------------------------------------------------
+       7. OPEN / CLOSE LOVE LETTER
+       ---------------------------------------------------- */
+    function openLetter() {
+      const sealed = document.getElementById('envelopeSealed');
+      const open = document.getElementById('envelopeOpen');
+
+      sealed.classList.add('hidden');
+      open.classList.remove('hidden');
+
+      confetti({
+        particleCount: 35,
+        spread: 60,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function closeLetter() {
+      const sealed = document.getElementById('envelopeSealed');
+      const open = document.getElementById('envelopeOpen');
+
+      open.classList.add('hidden');
+      sealed.classList.remove('hidden');
+    }
+
+    /* ----------------------------------------------------
+       8. RELEASE SKY LANTERN
+       ---------------------------------------------------- */
+    function releaseLantern() {
+      const input = document.getElementById('wishInput');
+      const status = document.getElementById('lanternStatus');
+
+      if (!input.value.trim()) {
+        input.focus();
+        input.placeholder = "Please write a wish first, Prathyusha! ✨";
+        return;
+      }
+
+      status.classList.remove('hidden');
+      input.value = '';
+
+      // Create glowing lantern particle animation
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          confetti({
+            particleCount: 20,
+            angle: 90,
+            spread: 45,
+            origin: { x: 0.5, y: 0.9 },
+            colors: ['#f59e0b', '#fbbf24', '#fef3c7']
+          });
+        }, i * 300);
+      }
+    }
+  </script>
+</body>
+</html>
